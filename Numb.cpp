@@ -61,6 +61,7 @@ void Numb::lit()
 		case 3: printf("trzynascie "); break;
 		case 2: printf("dwanascie "); break;
 		case 1: printf("jedenascie "); break;
+		case 0: printf("dziesiec "); break;
 		default: break;
 		}
 
@@ -147,6 +148,7 @@ void Numb::lit()
 		case 3: printf("trzynascie "); break;
 		case 2: printf("dwanascie "); break;
 		case 1: printf("jedenascie "); break;
+		case 0: printf("dziesiec "); break;
 		default: break;
 		}
 	}
@@ -174,7 +176,7 @@ void Numb::desc()
 	printf("[ %-6d, ", _val); lit(); printf("]");
 }
 
-void Numb::getVal(int n)
+bool Numb::getVal(int n)
 {
 	if (n<1000000)
 	{
@@ -188,9 +190,13 @@ void Numb::getVal(int n)
 	r = (l - (l % 100)); l-=r; r/=100; _digits[3]=r;
 	r = (l - (l % 10)); l-=r; r/=10; _digits[4]=r;
 	r = l; _digits[5]=r;
-	
+	return true;
 	}
-	else printf("# ERROR(Numb): New value is too large. Unsuccesful initioalization.");
+	else 
+	{
+		printf("\n# ERROR(Numb): New value is too large. Unsuccesful initioalization.\n");
+		return false;
+	}
 }
 
 int Numb::scanDigits()
@@ -201,4 +207,10 @@ int Numb::scanDigits()
 		if (_digits[i]==0 || _digits[i]==1) ctr++;
 	}
 	return ctr;
+}
+
+int Numb::showDigit(int n)
+{
+	if (n>0 && n<7) return _digits[n-1];
+	else return -1;
 }

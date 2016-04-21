@@ -15,8 +15,9 @@ public:
 
 	Numb(int);
 	int val() {return _val;} //aktualna wartosc
-	void getVal(int);  //nowa wartosc
+	bool getVal(int);  //nowa wartosc
 	void lit();  //tutaj dzieje sie cala rzecz
 	int scanDigits();  //skanowanie cyfr pod wzgledem zer i jedynej
+	int showDigit(int); //pokaz cyfre numer n
 	void desc(); //opis obiektu
 };
